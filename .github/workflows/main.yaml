@@ -22,5 +22,6 @@ jobs:
         run: mvn test
       - name: maven package
         run: mvn package
-      - name: build and test and sonarqube scan 
+
+ 
 
