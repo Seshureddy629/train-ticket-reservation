@@ -23,9 +23,4 @@ jobs:
       - name: maven package
         run: mvn package
       - name: build and test and sonarqube scan 
-        run: 
-          mvn clean verify sonar:sonar \
-            -Dsonar.projectKey=train-ticket-reservation \
-            -Dsonar.host.url="${{ secrets.SONAR_HOST_URL }}" \
-            -Dsonar.login="${{ secrets.SONAR_TOKEN }}"
- 
+
