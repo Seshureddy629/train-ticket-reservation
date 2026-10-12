@@ -4,6 +4,12 @@
 	<artifactId>TrainBook</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>war</packaging>
+	<distributionManagement>
+        <repository>
+            <id>nexus</id>
+            <url>${NEXUS_REPO_URL}</url>
+        </repository>
+    </distributionManagement>
 	<build>
 		<sourceDirectory>src</sourceDirectory>
 		<resources>
