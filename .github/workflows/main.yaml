@@ -32,6 +32,9 @@ jobs:
                       <id>nexus</id>
                       <username>${{ secrets.NEXUS_USERNAME }}</username>
                       <password>${{ secrets.NEXUS_PASSWORD }}</password>
+                      <repositoryOrigins>
+                        <origin>${{ secrets.NEXUS_REPO_URL }}</origin>
+                      </repositoryOrigins>
                     </server>
                   </servers>
                 </settings>
