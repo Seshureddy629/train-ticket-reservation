@@ -33,7 +33,7 @@ jobs:
                       <username>${{ secrets.NEXUS_USERNAME }}</username>
                       <password>${{ secrets.NEXUS_PASSWORD }}</password>
                       <repositoryOrigins>
-                        <origin>${{ secrets.NEXUS_REPO_URL }}</origin>
+                        <origin>${{ secrets.NEXUS_HOST_URL }}</origin>
                       </repositoryOrigins>
                     </server>
                   </servers>
@@ -41,5 +41,5 @@ jobs:
                 EOF
       
       - name: Upload Artifact to Nexus
-        run: mvn deploy -DaltDeploymentRepository=nexus::default::${{ secrets.NEXUS_REPO_URL }}
+        run: mvn deploy -DaltDeploymentRepository=nexus::default::${{ secrets.NEXUS_HOST_URL }}
 
