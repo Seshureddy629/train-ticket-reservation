@@ -22,24 +22,12 @@ jobs:
         run: mvn test
       - name: maven package
         run: mvn package
-      - name: Authenticate with Nexus
-        run: |
-                mkdir -p ~/.m2
-                cat <<EOF > ~/.m2/settings.xml
-                <settings>
-                  <servers>
-                    <server>
-                      <id>nexus</id>
-                      <username>${{ secrets.NEXUS_USERNAME }}</username>
-                      <password>${{ secrets.NEXUS_PASSWORD }}</password>
-                      <repositoryOrigins>
-                        <origin>${{ secrets.NEXUS_HOST_URL }}</origin>
-                      </repositoryOrigins>
-                    </server>
-                  </servers>
-                </settings>
-                EOF
-      
-      - name: Upload Artifact to Nexus
-        run: mvn deploy -DaltDeploymentRepository=nexus::default::${{ secrets.NEXUS_HOST_URL }}
+      - name: SonarQube Scan
+        env:
+                SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+                SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+              run: |
+                mvn sonar:sonar \
+                  -Dsonar.host.url="${{ secrets.SONAR_HOST_URL }}" \
+                  -Dsonar.token="${{ secrets.SONAR_TOKEN }}"
 
