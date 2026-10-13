@@ -24,9 +24,9 @@ jobs:
         run: mvn package
       - name: SonarQube Scan
         env:
-                SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-                SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-              run: |
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+        run: |
                 mvn sonar:sonar \
                   -Dsonar.host.url="${{ secrets.SONAR_HOST_URL }}" \
                   -Dsonar.token="${{ secrets.SONAR_TOKEN }}"
